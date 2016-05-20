@@ -1,25 +1,25 @@
 <%--
   Created by IntelliJ IDEA.
   User: roski
-  Date: 4/27/16
-  Time: 8:39 PM
+  Date: 20.5.16
+  Time: 17.52
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Error</title>
+    <title>Order</title>
 </head>
 <body>
 <header>
-    <h1>Sorry for error</h1>
+    <h1>Order</h1>
 </header>
 <nav>
     <a href="/projectx/">Main page</a>
+    <a href="/projectx/dashboard">Dashboard</a>
 </nav>
 <section>
-    Error:
-    <%=request.getAttribute("error")%>
+    <h1>Make order</h1>
 </section>
 <footer>
     <p>©2016 DreamTeam Ltd.<p>

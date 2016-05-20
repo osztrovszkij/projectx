@@ -10,13 +10,13 @@ import java.io.IOException;
 /**
  * Created by roski on 20.5.16.
  */
-@WebServlet(name = "OrderController")
+@WebServlet(name = "OrderController", urlPatterns = "/dashboard/order")
 public class OrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("order.jsp").forward(request, response);
     }
 }

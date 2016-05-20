@@ -12,6 +12,13 @@
     <title>Login</title>
 </head>
 <body>
+<header>
+    <h1>Hard party</h1>
+</header>
+<nav>
+    <a href="/projectx/">Main page</a>
+</nav>
+<section>
     <form action="login" method="post">
         Username: <input type="text" name="username">
         <br>
@@ -19,7 +26,10 @@
         <br>
         <input type="submit" value="Login">
     </form>
-
     <%=request.getAttribute("messages")%>
+</section>
+<footer>
+    <p>©2016 DreamTeam Ltd.<p>
+</footer>
 </body>
 </html>

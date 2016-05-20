@@ -10,13 +10,13 @@ import java.io.IOException;
 /**
  * Created by roski on 20.5.16.
  */
-@WebServlet(name = "ProfileController")
+@WebServlet(name = "ProfileController", urlPatterns = "/dashboard/profile")
 public class ProfileController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 }

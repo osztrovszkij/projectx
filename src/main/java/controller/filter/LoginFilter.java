@@ -29,25 +29,24 @@ public class LoginFilter implements Filter {
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
         boolean isValidURI = false;
-        boolean isAdminURI = false;
 
         HashMap<String, String> URIs = new HashMap();
-        URIs.put("user", "/");
-        URIs.put("user", "/login");
-        URIs.put("user", "/dashboard");
-        URIs.put("user", "/dashboard/order");
-        URIs.put("user", "/dashboard/profile");
-        URIs.put("admin", "/dashboard/users");
-        URIs.put("admin", "/dashboard/orders");
-        URIs.put("admin", "/dashboard/services");
+        URIs.put("/", "user");
+        URIs.put("/login", "user");
+        URIs.put("/dashboard", "user");
+        URIs.put("/dashboard/order", "user");
+        URIs.put("/dashboard/profile", "user");
+        URIs.put("/dashboard/users", "admin");
+        URIs.put("/dashboard/services", "admin");
 
         if (loggedIn) {
             User user = (User) session.getAttribute("user");
             String role = user.getRole();
 
             for (Map.Entry uri : URIs.entrySet()) {
-                if (request.getServletPath().equals(uri.getValue())) {
-                    if (uri.getKey().equals("admin") && !role.equals("admin")) {
+                String s =request.getServletPath();
+                if (request.getServletPath().equals(uri.getKey())) {
+                    if (uri.getValue().equals("admin") && !role.equals("admin")) {
                         isValidURI = false;
                     } else {
                         isValidURI = true;
@@ -55,25 +54,12 @@ public class LoginFilter implements Filter {
                 }
             }
 
-            if (isValidURI) {
-                chain.doFilter(request, response);
-            } else {
+            if (!isValidURI) {
                 request.setAttribute("error", "It's invalid page");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+                request.getRequestDispatcher("/error.jsp").forward(request, response);
+            } else {
+                chain.doFilter(request, response);
             }
-
-//            for (Map.Entry uri : URIs.entrySet()) {
-//                //String s = request.getServletPath();
-//                if (request.getServletPath().equals(uri))
-//                    isValidUrl = true;
-//            }
-//
-//            if (!isValidUrl) {
-//                request.setAttribute("error", "It's invalid page");
-//                request.getRequestDispatcher("error.jsp").forward(request, response);
-//            } else {
-//                chain.doFilter(request, response);
-//            }
         } else if (loginRequest) {
             chain.doFilter(request, response);
         } else {
