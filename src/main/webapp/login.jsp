@@ -15,9 +15,6 @@
 <header>
     <h1>Hard party</h1>
 </header>
-<nav>
-    <a href="/projectx/">Main page</a>
-</nav>
 <section>
     <form action="login" method="post">
         Username: <input type="text" name="username">

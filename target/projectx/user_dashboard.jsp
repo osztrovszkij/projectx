@@ -15,11 +15,14 @@
     <h1>Hard party</h1>
 </header>
 <nav>
-    <a href="/projectx/">Main page</a>
-    <a href="/projectx/dashboard/order">Make Order</a>
-    <a href="/projectx/dashboard/profile">My Profile</a>
+    <a href="/projectx/">Main page</a><br>
+    <a href="/projectx/dashboard/order">Make Order</a><br>
+    <a href="/projectx/dashboard/profile">My Profile</a><br>
 </nav>
 <section>
+    <form action="logout" method="post">
+        <input type="submit" value="Logout" >
+    </form>
     <h1><% String username = ((User) session.getAttribute("user")).getUsername();%>
         It's a dashboard. Hi, <%=username%> !</h1>
 </section>

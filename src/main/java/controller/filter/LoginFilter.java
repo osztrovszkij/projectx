@@ -33,6 +33,7 @@ public class LoginFilter implements Filter {
         HashMap<String, String> URIs = new HashMap();
         URIs.put("/", "user");
         URIs.put("/login", "user");
+        URIs.put("/logout", "user");
         URIs.put("/dashboard", "user");
         URIs.put("/dashboard/order", "user");
         URIs.put("/dashboard/profile", "user");

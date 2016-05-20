@@ -15,11 +15,12 @@
     <h1>Order</h1>
 </header>
 <nav>
-    <a href="/projectx/">Main page</a>
-    <a href="/projectx/dashboard">Dashboard</a>
+    <a href="/projectx/">Main page</a><br>
+    <a href="/projectx/dashboard">Dashboard</a><br>
 </nav>
 <section>
     <h1>Make order</h1>
+
 </section>
 <footer>
     <p>©2016 DreamTeam Ltd.<p>
