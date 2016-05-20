@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65181cbf-8521-4172-8fd7-97bc5bb4474f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/MysqlUserDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/MysqlUserDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/UserSqlStatement.java" afterPath="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/UserSqlStatement.java" />
     </list>
     <ignored path="projectx.iws" />
@@ -132,8 +130,8 @@
       <file leaf-file-name="UserSqlStatement.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/mysqlimpl/UserSqlStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state relative-caret-position="120">
+              <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -204,8 +202,8 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/SqlStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/factoryimpl/MysqlDaoFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/UserSqlStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/MysqlUserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/mysqlimpl/UserSqlStatement.java" />
       </list>
     </option>
   </component>
@@ -1140,7 +1138,7 @@
       <workItem from="1463689373472" duration="2471000" />
       <workItem from="1463692591660" duration="847000" />
       <workItem from="1463697535949" duration="4280000" />
-      <workItem from="1463703846515" duration="236000" />
+      <workItem from="1463703846515" duration="1540000" />
     </task>
     <task id="LOCAL-00001" summary="skr">
       <created>1463701151222</created>
@@ -1156,11 +1154,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463701434743</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="skr2">
+      <created>1463704121546</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1463704121546</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92171000" />
+    <option name="totallyTimeSpent" value="93475000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1220,7 +1225,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="skr" />
     <MESSAGE value="skr1" />
-    <option name="LAST_COMMIT_MESSAGE" value="skr1" />
+    <MESSAGE value="skr2" />
+    <option name="LAST_COMMIT_MESSAGE" value="skr2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1443,8 +1449,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/mysqlimpl/UserSqlStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        <state relative-caret-position="120">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
           <folding />
         </state>
       </provider>
