@@ -36,8 +36,7 @@ public final class MysqlUserDao extends AbstractJdbcDao<User, Integer>{
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO projectx.clients () \n" +
-                "VALUES (?, ?, ?, ?);";
+        return UserSqlStatement.INSERT_QUERY;
     }
 
     @Override
