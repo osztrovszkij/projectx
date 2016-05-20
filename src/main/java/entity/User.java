@@ -6,9 +6,6 @@ import dao.Identified;
  * Created by roski on 4/22/16.
  */
 public class User implements Identified<Integer> {
-    private String username;
-    private String password;
-    private String group;
 
     public void setUsername(String username) {
         this.username = username;
@@ -26,16 +23,20 @@ public class User implements Identified<Integer> {
         return password;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getGroup() {
-        return group;
+    public String getRole() {
+        return role;
     }
 
     @Override
     public Integer getId() {
         return null;
     }
+
+    private String username;
+    private String password;
+    private String role;
 }

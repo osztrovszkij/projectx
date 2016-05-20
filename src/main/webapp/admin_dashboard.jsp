@@ -1,8 +1,8 @@
 <%@ page import="entity.User" %><%--
   Created by IntelliJ IDEA.
   User: roski
-  Date: 4/28/16
-  Time: 11:19 AM
+  Date: 20.5.16
+  Time: 16.01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,6 +12,6 @@
 </head>
 <body>
     <% String username = ((User) session.getAttribute("user")).getUsername();%>
-    It's a dashboard. Hi, <%=username%> !
+    It's a admin dashboard. Hi, <%=username%> !
 </body>
 </html>

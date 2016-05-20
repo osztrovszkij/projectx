@@ -60,7 +60,7 @@ public final class MysqlUserDao extends AbstractJdbcDao<User, Integer>{
                 User user = new User();
                 user.setUsername(rs.getString("login"));
                 user.setPassword(rs.getString("password"));
-                user.setGroup(rs.getString("role"));
+                user.setRole(rs.getString("role"));
                 users.add(user);
             }
         } catch (SQLException e) {
