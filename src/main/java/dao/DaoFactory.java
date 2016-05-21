@@ -1,6 +1,7 @@
 package dao;
 
 import dao.factoryimpl.MysqlDaoFactory;
+import entity.Service;
 import entity.User;
 
 /**
@@ -9,7 +10,8 @@ import entity.User;
 public abstract class DaoFactory {
     public static final int MYSQL = 1;
 
-    public abstract GenericDao<User, Integer> getUserDao() throws DaoException;
+    public abstract GenericDao<User> getUserDao() throws DaoException;
+    public abstract GenericDao<Service> getServiceDao() throws DaoException;
 
     public static DaoFactory getDaoFactory(int factoryType) {
         switch (factoryType) {

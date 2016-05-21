@@ -3,7 +3,9 @@ package dao.factoryimpl;
 import dao.DaoException;
 import dao.DaoFactory;
 import dao.GenericDao;
+import dao.mysqlimpl.MysqlServiceDao;
 import dao.mysqlimpl.MysqlUserDao;
+import entity.Service;
 import entity.User;
 
 import java.sql.Connection;
@@ -43,7 +45,12 @@ public final class MysqlDaoFactory extends DaoFactory {
         return  connection;
     }
 
-    public GenericDao<User, Integer> getUserDao() throws DaoException {
+    public GenericDao<User> getUserDao() throws DaoException {
         return new MysqlUserDao();
     }
+
+    public GenericDao<Service> getServiceDao() throws DaoException {
+        return new MysqlServiceDao();
+    }
+
 }

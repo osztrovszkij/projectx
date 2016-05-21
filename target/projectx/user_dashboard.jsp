@@ -1,4 +1,5 @@
-<%@ page import="entity.User" %><%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
   Created by IntelliJ IDEA.
   User: roski
   Date: 4/28/16
@@ -15,16 +16,17 @@
     <h1>Hard party</h1>
 </header>
 <nav>
-    <a href="/projectx/">Main page</a><br>
-    <a href="/projectx/dashboard/order">Make Order</a><br>
-    <a href="/projectx/dashboard/profile">My Profile</a><br>
+    <a href="/projectx/"><button>Main page</button></a><br>
+    <a href="/projectx/dashboard/order"><button>Make Order</button></a><br>
+    <a href="/projectx/dashboard/profile"><button>My Profile</button></a><br>
 </nav>
 <section>
     <form action="logout" method="post">
         <input type="submit" value="Logout" >
     </form>
-    <h1><% String username = ((User) session.getAttribute("user")).getUsername();%>
-        It's a dashboard. Hi, <%=username%> !</h1>
+    <h1>
+        Hi, <c:out value="${user.login}"/>. It's a dashboard.
+    </h1>
 </section>
 <footer>
     <p>©2016 DreamTeam Ltd.<p>

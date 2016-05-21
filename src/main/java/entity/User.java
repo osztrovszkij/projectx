@@ -1,18 +1,16 @@
 package entity;
 
-import dao.Identified;
-
 /**
  * Created by roski on 4/22/16.
  */
-public class User implements Identified<Integer> {
+public class User {
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLogin() {
+        return login;
     }
 
     public void setPassword(String password) {
@@ -31,12 +29,7 @@ public class User implements Identified<Integer> {
         return role;
     }
 
-    @Override
-    public Integer getId() {
-        return null;
-    }
-
-    private String username;
+    private String login;
     private String password;
     private String role;
 }

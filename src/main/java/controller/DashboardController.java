@@ -24,10 +24,10 @@ public class DashboardController extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         switch (user.getRole()) {
-            case "admin" :
+            case "admin":
                 request.getRequestDispatcher("admin_dashboard.jsp").forward(request, response);
                 break;
-            case "user" :
+            case "user":
                 request.getRequestDispatcher("user_dashboard.jsp").forward(request, response);
                 break;
         }

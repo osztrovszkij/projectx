@@ -45,7 +45,6 @@ public class LoginFilter implements Filter {
             String role = user.getRole();
 
             for (Map.Entry uri : URIs.entrySet()) {
-                String s =request.getServletPath();
                 if (request.getServletPath().equals(uri.getKey())) {
                     if (uri.getValue().equals("admin") && !role.equals("admin")) {
                         isValidURI = false;
@@ -58,6 +57,8 @@ public class LoginFilter implements Filter {
             if (!isValidURI) {
                 request.setAttribute("error", "It's invalid page");
                 request.getRequestDispatcher("/error.jsp").forward(request, response);
+            } else if (request.getServletPath().equals("/login")) {
+                response.sendRedirect("/projectx/dashboard");
             } else {
                 chain.doFilter(request, response);
             }

@@ -10,20 +10,20 @@ import java.util.List;
 /**
  * Created by roski on 4/22/16.
  */
-public class FindUserService {
-    public static User findByUsername(String username) throws ServiceException {
+public class UserService {
+    public static User findByLogin(String login) throws ServiceException {
         DaoFactory daoFactory = DaoFactory.getDaoFactory(DaoFactory.MYSQL);
-        GenericDao<User, Integer> userDao = null;
+        GenericDao<User> userDao;
         try {
-            userDao = (GenericDao<User, Integer>) daoFactory.getUserDao();
+            userDao = daoFactory.getUserDao();
         } catch (DaoException e) {
             throw new ServiceException(e.getMessage());
         }
 
         try {
-            List<User> users = userDao.find(username);
+            List<User> users = userDao.find(login);
             if (!users.isEmpty()) {
-                return userDao.find(username).get(0);
+                return userDao.find(login).get(0);
             } else {
                 return null;
             }
@@ -34,17 +34,17 @@ public class FindUserService {
 
     public static List<User> findAll() throws ServiceException {
         DaoFactory daoFactory = DaoFactory.getDaoFactory(DaoFactory.MYSQL);
-        GenericDao<User, Integer> userDao = null;
+        GenericDao<User> userDao;
         try {
-            userDao = (GenericDao<User, Integer>) daoFactory.getUserDao();
+            userDao = daoFactory.getUserDao();
         } catch (DaoException e) {
-            throw new ServiceException("FindUserService error", e);
+            throw new ServiceException("UserService error", e);
         }
 
         try {
             return userDao.findAll();
         } catch (DaoException e) {
-            throw new ServiceException("FindUserService error", e);
+            throw new ServiceException("UserService error", e);
         }
     }
 }

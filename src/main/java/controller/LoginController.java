@@ -1,7 +1,7 @@
 package controller;
 
 import entity.User;
-import service.FindUserService;
+import service.UserService;
 import service.ServiceException;
 
 import javax.servlet.RequestDispatcher;
@@ -22,13 +22,13 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher view;
 
-        String username = request.getParameter("username");
+        String username = request.getParameter("login");
         String password = request.getParameter("password");
 
         Map<String, String> messages = new HashMap<>();
 
         if (username == null || username.isEmpty()) {
-            messages.put("username", "Please enter username");
+            messages.put("login", "Please enter login");
         }
         if (password == null || password.isEmpty()) {
             messages.put("password", "Please enter password");
@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet {
         if (messages.isEmpty()) {
             User user = null;
             try {
-                user = FindUserService.findByUsername(username);
+                user = UserService.findByLogin(username);
             } catch (ServiceException e) {
                 request.setAttribute("error", e.getMessage());
                 view = request.getRequestDispatcher("/error.jsp");

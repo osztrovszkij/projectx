@@ -3,6 +3,7 @@ package dao.mysqlimpl;
 import dao.AbstractJdbcDao;
 import dao.DaoException;
 import dao.factoryimpl.MysqlDaoFactory;
+import dao.mysqlimpl.sqlstatement.UserSqlStatement;
 import entity.User;
 
 import java.sql.*;
@@ -12,16 +13,10 @@ import java.util.List;
 /**
  * Created by roski on 4/22/16.
  */
-public final class MysqlUserDao extends AbstractJdbcDao<User, Integer>{
-    //private final static MysqlUserDao instance = new MysqlUserDao();
-
+public final class MysqlUserDao extends AbstractJdbcDao<User>{
     public MysqlUserDao() throws DaoException {
         super(MysqlDaoFactory.createConnection());
     }
-
-//    public static MysqlUserDao getInstance() {
-//        return instance;
-//    }
 
     @Override
     public String getSelectQuery() {
@@ -35,20 +30,18 @@ public final class MysqlUserDao extends AbstractJdbcDao<User, Integer>{
     }
 
     @Override
-    public String getCreateQuery() {
+    public String getInsertQuery() {
         return UserSqlStatement.INSERT_QUERY;
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE projectx.clients \n" +
-                "SET name = ?, surname  = ?, enrolment_date = ?, group_id = ? \n" +
-                "WHERE id = ?;";
+        return UserSqlStatement.UPDATE_QUERY;
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM projectx.clients WHERE id= ?;";
+        return UserSqlStatement.DELETE_QUERY;
     }
 
     @Override
@@ -58,7 +51,7 @@ public final class MysqlUserDao extends AbstractJdbcDao<User, Integer>{
         try {
             while (rs.next()) {
                 User user = new User();
-                user.setUsername(rs.getString("login"));
+                user.setLogin(rs.getString("login"));
                 user.setPassword(rs.getString("password"));
                 user.setRole(rs.getString("role"));
                 users.add(user);

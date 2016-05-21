@@ -15,11 +15,15 @@
     <h1>Sorry for error</h1>
 </header>
 <nav>
-    <a href="/projectx/">Main page</a>
+    <a href="/projectx/">
+        <button>Main page</button>
+    </a>
 </nav>
 <section>
-    Error:
-    <%=request.getAttribute("error")%>
+    <h2>
+        Error:
+        <c:out value="${error}"/>
+    </h2>
 </section>
 <footer>
     <p>©2016 DreamTeam Ltd.<p>

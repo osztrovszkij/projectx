@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +9,7 @@ import java.util.List;
 /**
  * Created by roski on 4/23/16.
  */
-public abstract class AbstractJdbcDao<T extends Identified<PK>, PK extends Serializable> implements GenericDao<T, PK> {
+public abstract class AbstractJdbcDao<T> implements GenericDao<T> {
     private Connection connection;
 
     public AbstractJdbcDao(Connection connection) {
@@ -36,7 +35,7 @@ public abstract class AbstractJdbcDao<T extends Identified<PK>, PK extends Seria
         }
     }
 
-    public abstract String getCreateQuery();
+    public abstract String getInsertQuery();
     public abstract String getSelectQuery();
     public abstract String getFindQuery();
     public abstract String getUpdateQuery();
@@ -44,13 +43,13 @@ public abstract class AbstractJdbcDao<T extends Identified<PK>, PK extends Seria
 
     protected abstract List<T> parseResultSet(ResultSet rs) throws DaoException;
 
-    protected abstract void prepareStatementForInsert(PreparedStatement statement, T object) throws DaoException;
-    protected abstract void prepareStatementForUpdate(PreparedStatement statement, T object) throws DaoException;
+    protected abstract void prepareStatementForInsert(PreparedStatement statement, T object) throws DaoException, SQLException;
+    protected abstract void prepareStatementForUpdate(PreparedStatement statement, T object) throws DaoException, SQLException;
 
     public T persist(T object) throws DaoException {
         T persistInstance;
 
-        String sql = getCreateQuery();
+        String sql = getInsertQuery();
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             prepareStatementForInsert(statement, object);
             int count = statement.executeUpdate();
@@ -61,7 +60,8 @@ public abstract class AbstractJdbcDao<T extends Identified<PK>, PK extends Seria
             throw new DaoException(e);
         }
 
-        sql = getSelectQuery() + " WHERE id = last_insert_id();";
+        sql = getSelectQuery();
+        sql = sql.substring(0, sql.length() - 1) + " WHERE id_service = last_insert_id();";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
             List<T> list = parseResultSet(rs);
@@ -85,9 +85,6 @@ public abstract class AbstractJdbcDao<T extends Identified<PK>, PK extends Seria
         } catch (Exception e) {
             throw new DaoException(e);
         }
-//        if (list == null || list.size() == 0) {
-//            throw new DaoException("Record not found.");
-//        }
         return list;
     }
 
@@ -116,11 +113,11 @@ public abstract class AbstractJdbcDao<T extends Identified<PK>, PK extends Seria
         }
     }
 
-    public void delete(T object) throws DaoException {
+    public void delete(Object key) throws DaoException {
         String sql = getDeleteQuery();
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             try {
-                statement.setObject(1, object.getId());
+                statement.setObject(1, key);
             } catch (Exception e) {
                 throw new DaoException(e);
             }

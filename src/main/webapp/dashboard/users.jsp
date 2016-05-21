@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: roski
@@ -15,11 +16,30 @@
     <h1>User management</h1>
 </header>
 <nav>
-    <a href="/projectx/">Main page</a><br>
-    <a href="/projectx/dashboard">Dashboard</a><br>
+    <a href="/projectx/"><button>Main page</button></a><br>
+    <a href="/projectx/dashboard"><button>Dashboard</button></a><br>
 </nav>
 <section>
+
     <h1>User management</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Login</th>
+            <th>password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach  var="user" items="${users}">
+            <tr>
+                <td><c:out value="${user.login}" /></td>
+                <td><c:out value="${user.password}" /></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
 </section>
 <footer>
     <p>©2016 DreamTeam Ltd.<p>

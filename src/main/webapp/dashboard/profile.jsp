@@ -15,8 +15,8 @@
     <h1>My profile</h1>
 </header>
 <nav>
-    <a href="/projectx/">Main page</a><br>
-    <a href="/projectx/dashboard">Dashboard</a><br>
+    <a href="/projectx/"><button>Main page</button></a><br>
+    <a href="/projectx/dashboard"><button>Dashboard</button></a><br>
 </nav>
 <section>
     <h1>Profile management</h1>
