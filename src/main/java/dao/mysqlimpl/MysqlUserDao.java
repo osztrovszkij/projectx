@@ -45,6 +45,12 @@ public final class MysqlUserDao extends AbstractJdbcDao<User>{
     }
 
     @Override
+    public String getLastRowQuery() {
+        String rawQuery = getSelectQuery();
+        return rawQuery.substring(0, rawQuery.length() - 1) + " WHERE id_user = last_insert_id();";
+    }
+
+    @Override
     protected List<User> parseResultSet(ResultSet rs) throws DaoException {
         List<User> users = new ArrayList<>();
 
@@ -64,13 +70,39 @@ public final class MysqlUserDao extends AbstractJdbcDao<User>{
 
 
     @Override
-    protected void prepareStatementForInsert(PreparedStatement statement, User object) throws DaoException {
-        
+    protected void prepareStatementForInsert(PreparedStatement statement, User object) throws DaoException, SQLException {
+        statement.setString(1, object.getLogin());
+        statement.setString(2, object.getPassword());
+        int role;
+        switch (object.getRole()) {
+            case "user":
+                role = 1;
+                break;
+            case "admin":
+                role = 2;
+                break;
+            default:
+                role = 0;
+        }
+        statement.setInt(3, role);
     }
 
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement statement, User object) throws DaoException {
-
+    protected void prepareStatementForUpdate(PreparedStatement statement, User object) throws DaoException, SQLException {
+        statement.setString(1, object.getPassword());
+        int role;
+        switch (object.getRole()) {
+            case "user":
+                role = 1;
+                break;
+            case "admin":
+                role = 2;
+                break;
+            default:
+                role = 0;
+        }
+        statement.setInt(2, role);
+        statement.setString(3, object.getLogin());
     }
 
     @Override

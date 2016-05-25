@@ -3,8 +3,10 @@ package dao.factoryimpl;
 import dao.DaoException;
 import dao.DaoFactory;
 import dao.GenericDao;
+import dao.mysqlimpl.MysqlOrderDao;
 import dao.mysqlimpl.MysqlServiceDao;
 import dao.mysqlimpl.MysqlUserDao;
+import entity.Order;
 import entity.Service;
 import entity.User;
 
@@ -51,6 +53,10 @@ public final class MysqlDaoFactory extends DaoFactory {
 
     public GenericDao<Service> getServiceDao() throws DaoException {
         return new MysqlServiceDao();
+    }
+
+    public GenericDao<Order> getOrderDao() throws DaoException {
+        return new MysqlOrderDao();
     }
 
 }

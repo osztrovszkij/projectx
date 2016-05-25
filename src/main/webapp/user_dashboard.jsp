@@ -9,24 +9,32 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style>
+        <%@include file="css/main.css"%>
+    </style>
     <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
 <body>
 <header>
     <h1>Hard party</h1>
 </header>
 <nav>
-    <a href="/projectx/"><button>Main page</button></a><br>
-    <a href="/projectx/dashboard/order"><button>Make Order</button></a><br>
-    <a href="/projectx/dashboard/profile"><button>My Profile</button></a><br>
+    <a href="/projectx/dashboard/order"><button>Make Order</button></a>
+    <a href="/projectx/dashboard/profile"><button>My Profile</button></a>
+    <div class="logout">
+        <form action="logout" method="post">
+            <input type="submit" value="Logout" >
+        </form>
+    </div>
 </nav>
-<section>
-    <form action="logout" method="post">
-        <input type="submit" value="Logout" >
-    </form>
-    <h1>
-        Hi, <c:out value="${user.login}"/>. It's a dashboard.
-    </h1>
+<section class="wrap">
+    <div class="observ">
+        <h2>
+            Hi, <c:out value="${user.login}"/>. It's a dashboard.
+        </h2>
+    </div>
+    <div rel="main"></div>
 </section>
 <footer>
     <p>©2016 DreamTeam Ltd.<p>

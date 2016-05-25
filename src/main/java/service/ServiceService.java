@@ -12,7 +12,7 @@ import java.util.List;
  * Created by roski on 20.5.16.
  */
 public class ServiceService {
-    public static Service findByName(String name) throws ServiceException {
+        public static Service findByName(String name) throws ServiceException {
         DaoFactory daoFactory = DaoFactory.getDaoFactory(DaoFactory.MYSQL);
         GenericDao<Service> serviceDao;
         try {
@@ -24,7 +24,7 @@ public class ServiceService {
         try {
             List<Service> services = serviceDao.find(name);
             if (!services.isEmpty()) {
-                return serviceDao.find(name).get(0);
+                return services.get(0);
             } else {
                 return null;
             }

@@ -9,6 +9,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style>
+        <%@include file="css/main.css"%>
+    </style>
     <title>Party hard</title>
 </head>
 <body>

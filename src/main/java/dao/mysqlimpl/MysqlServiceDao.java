@@ -49,6 +49,12 @@ public class MysqlServiceDao extends AbstractJdbcDao<Service> {
     }
 
     @Override
+    public String getLastRowQuery() {
+        String rawQuery = getSelectQuery();
+        return rawQuery.substring(0, rawQuery.length() - 1) + " WHERE id_service = last_insert_id();";
+    }
+
+    @Override
     protected List<Service> parseResultSet(ResultSet rs) throws DaoException {
         List<Service> services = new ArrayList<>();
 

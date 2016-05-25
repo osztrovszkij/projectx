@@ -8,18 +8,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style>
+        <%@include file="../css/main.css"%>
+    </style>
     <title>My profile</title>
 </head>
 <body>
 <header>
     <h1>My profile</h1>
 </header>
-<nav>
-    <a href="/projectx/"><button>Main page</button></a><br>
-    <a href="/projectx/dashboard"><button>Dashboard</button></a><br>
+<nav class="button_list">
+    <a href="/projectx/dashboard"><button>Dashboard</button></a>
 </nav>
-<section>
-    <h1>Profile management</h1>
+<section class="wrap">
+    <div class="observ">
+        <h2>Profile management</h2>
+    </div>
+    <div rel="main"></div>
 </section>
 <footer>
     <p>©2016 DreamTeam Ltd.<p>

@@ -40,6 +40,7 @@ public abstract class AbstractJdbcDao<T> implements GenericDao<T> {
     public abstract String getFindQuery();
     public abstract String getUpdateQuery();
     public abstract String getDeleteQuery();
+    public abstract String getLastRowQuery();
 
     protected abstract List<T> parseResultSet(ResultSet rs) throws DaoException;
 
@@ -60,8 +61,7 @@ public abstract class AbstractJdbcDao<T> implements GenericDao<T> {
             throw new DaoException(e);
         }
 
-        sql = getSelectQuery();
-        sql = sql.substring(0, sql.length() - 1) + " WHERE id_service = last_insert_id();";
+        sql = getLastRowQuery();
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
             List<T> list = parseResultSet(rs);
