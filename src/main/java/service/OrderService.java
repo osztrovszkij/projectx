@@ -7,6 +7,7 @@ import entity.Order;
 import entity.Service;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * Created by roski on 21.5.16.
@@ -25,6 +26,34 @@ public class OrderService {
             List<Order> orders = orderDao.find(id);
             if (!orders.isEmpty()) {
                 return orders.get(0);
+            } else {
+                return null;
+            }
+        } catch (DaoException e) {
+            throw new ServiceException("OrderService error" + e.getMessage());
+        }
+    }
+
+    public static List<Order> findByLogin(String login) throws ServiceException {
+        DaoFactory daoFactory = DaoFactory.getDaoFactory(DaoFactory.MYSQL);
+        GenericDao<Order> orderDao;
+        try {
+            orderDao = daoFactory.getOrderDao();
+        } catch (DaoException e) {
+            throw new ServiceException("OrderService error" + e.getMessage());
+        }
+
+        try {
+            List<Order> orders = orderDao.findAll();
+            if (!orders.isEmpty()) {
+                orders.removeIf(order -> {
+                    if (!login.equals(order.getUser())) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+                return orders;
             } else {
                 return null;
             }

@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: roski
-  Date: 20.5.16
-  Time: 17.51
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,6 +17,32 @@
 <section class="wrap">
     <div class="observ">
         <h2>Profile management</h2>
+    </div>
+    <div class="observ">
+        <h2>Hi, <c:out value="${user.login}"/>. It's a your profile.</h2>
+    </div>
+    <div class="observ">
+        <h2>Orders</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order date</th>
+                <th>Event date</th>
+                <th>Service name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach  var="order" items="${orders}">
+                <tr>
+                    <td><c:out value="${order.id}" /></td>
+                    <td><c:out value="${order.orderDate}" /></td>
+                    <td><c:out value="${order.eventDate}" /></td>
+                    <td><c:out value="${order.service}" /></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
     <div rel="main"></div>
 </section>
