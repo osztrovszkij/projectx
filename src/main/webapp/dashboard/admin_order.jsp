@@ -34,6 +34,31 @@
             </tbody>
         </table>
     </div>
+    <div class="observ">
+        <h2>Orders</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order date</th>
+                <th>Event date</th>
+                <th>Service name</th>
+                <th>User</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach  var="order" items="${orders}">
+                <tr>
+                    <td><c:out value="${order.id}" /></td>
+                    <td><c:out value="${order.orderDate}" /></td>
+                    <td><c:out value="${order.eventDate}" /></td>
+                    <td><c:out value="${order.service}" /></td>
+                    <td><c:out value="${order.user}" /></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
     <div class="list">
         <form class="form" action="order" method="post" name="form">
             <input type="hidden" name="request" value="add_order"/>
@@ -50,6 +75,50 @@
             </ul>
             <button class="submit" type="submit">Add order</button>
             <c:out value="${messages['add_order']}"/>
+        </form>
+    </div>
+    <div class="list">
+        <form class="form" action="order" method="post" name="form">
+            <input type="hidden" name="request" value="update_order"/>
+            <h3>Update order</h3>
+            <ul>
+                <li>
+                    <label for="update_id">Order ID</label>
+                    <input type="text" name="id" id="update_id"/>
+                </li>
+                <li>
+                    <label for="update_order_date">Order date</label>
+                    <input type="text" name="order_date" id="update_order_date"/>
+                </li>
+                <li>
+                    <label for="update_event_date">Event date</label>
+                    <input type="text" name="event_date" id="update_event_date"/>
+                </li>
+                <li>
+                    <label for="update_service_name">Service name</label>
+                    <input type="text" name="service_name" id="update_service_name"/>
+                </li>
+                <li>
+                    <label for="update_login">User login</label>
+                    <input type="text" name="login" id="update_login"/>
+                </li>
+            </ul>
+            <button class="submit" type="submit">Update order</button>
+            <c:out value="${messages['update_order']}"/>
+        </form>
+    </div>
+    <div class="list">
+        <form class="form" action="order" method="post" name="form">
+            <input type="hidden" name="request" value="delete_order"/>
+            <h3>Delete order</h3>
+            <ul>
+                <li>
+                    <label for="delete_id">Order ID</label>
+                    <input type="text" name="id" id="delete_id"/>
+                </li>
+            </ul>
+            <button class="submit" type="submit">Delete order</button>
+            <c:out value="${messages['delete_order']}"/>
         </form>
     </div>
     <div rel="main"></div>

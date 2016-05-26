@@ -19,7 +19,6 @@
     <h1>User management</h1>
 </header>
 <nav class="button_list">
-    <a href="/projectx/"><button>Main page</button></a>
     <a href="/projectx/dashboard"><button>Dashboard</button></a>
 </nav>
 <section class="wrap">

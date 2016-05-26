@@ -62,7 +62,7 @@ public class MysqlOrderDao extends AbstractJdbcDao<Order> {
                 order.setOrderDate(rs.getDate("order_date"));
                 order.setEventDate(rs.getDate("event_date"));
                 order.setService(rs.getString("name"));
-                order.setUser("login");
+                order.setUser(rs.getString("login"));
                 orders.add(order);
             }
         } catch (SQLException e) {
